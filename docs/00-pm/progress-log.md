@@ -36,3 +36,14 @@
 - [완료] [PM] P0-18 게이트 리뷰 **통과** — [gate-P0-18.md](gate-P0-18.md)
 - [추가] [PM] ADR-006, ADR-007 의사결정 (뷰 security_invoker, 초대 단순화)
 - [다음 단계] Phase 1 착수 — corder 부트스트랩 (B-002 Supabase 키 필요)
+- [완료] [PM] GitHub Public 리포 생성 — https://github.com/RaymondLEE0814/expense-saas
+- [완료] [PM] Git 초기화 + 첫 커밋 (29개 Phase 0 산출물)
+- [완료] [PM] pnpm 11.1.3 + supabase CLI 2.100.0 글로벌 설치
+- [완료] [PM] Supabase 프로젝트 `expense-saas-dev` 생성 (Seoul ap-northeast-2, Free)
+  - Project ref: gwvoiaxdjjmnfofbauwn
+- [완료] [PM] API 키 확보 + SRC/.env.local 작성 (gitignored)
+- [완료] [PM] supabase init + 마이그레이션 2건 작성 (timestamped)
+- [완료] [PM] 원격 link + db push 완료 (스키마 + RLS 정책 적용)
+- [완료] [PM] 두 번째 커밋(supabase/) GitHub 푸시
+- [블록 해소] B-002 closed (Supabase 프로젝트 생성 + 마이그레이션 완료)
+- [다음 단계] **corder 부트스트랩 (P1-01 ~ P1-05)** — Next.js 프로젝트 SRC/ 안에 초기화

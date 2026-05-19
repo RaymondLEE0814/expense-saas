@@ -6,14 +6,7 @@
 
 ## 🔴 미해결
 
-### B-002: Supabase 프로젝트 생성
-- **일자**: 2026-05-19
-- **차단 대상**: P1-02 (Supabase 환경 변수 설정), P1-03 (마이그레이션)
-- **필요 입력**:
-  - 사용자가 Supabase 계정에서 프로젝트 생성
-  - URL / anon key / service_role key 공유 (`.env.local`에 저장)
-  - Region: ap-northeast-2 (Seoul) 추천
-- **타이밍**: Phase 0 종료 시점까지 준비되면 OK (지금 당장 필요 X)
+_(없음)_
 
 ---
 
@@ -22,3 +15,11 @@
 ### B-001: 기획자(P0-03) 작업 착수 승인
 - 등록: 2026-05-19
 - 해결: 2026-05-19 — 사용자 승인 완료, P0-03~07 모두 완료, P0-08 게이트 통과
+
+### B-002: Supabase 프로젝트 생성
+- 등록: 2026-05-19
+- 해결: 2026-05-19 — `expense-saas-dev` 프로젝트 생성 완료 (Seoul ap-northeast-2)
+  - Reference: `gwvoiaxdjjmnfofbauwn`
+  - URL: https://gwvoiaxdjjmnfofbauwn.supabase.co
+  - 마이그레이션 2건 적용 완료 (스키마 + RLS)
+  - 자격증명은 `SRC/.env.local` (gitignored)에 저장

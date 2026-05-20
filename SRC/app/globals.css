@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* Dark mode preparation (Phase 2) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =================================================================
+ * 디자인 토큰 — Apple HIG 기반 (design_apple.md)
+ * design-system.md §1 의 Tailwind config 토큰을 v4 @theme 방식으로 매핑
+ * ================================================================= */
+
+:root {
+  /* 배경 */
+  --color-bg:            #FFFFFF;
+  --color-bg-secondary:  #F5F5F7;
+  --color-bg-tertiary:   #FAFAFA;
+  --color-bg-inverse:    #1D1D1F;
+
+  /* 전경 / 텍스트 */
+  --color-fg:            #1D1D1F;
+  --color-fg-secondary:  #6E6E73;
+  --color-fg-tertiary:   #86868B;
+  --color-fg-inverse:    #FFFFFF;
+  --color-fg-link:       #0071E3;
+
+  /* 액션 */
+  --color-accent:        #0071E3;
+  --color-accent-hover:  #0077ED;
+  --color-accent-active: #006EDB;
+
+  /* 구분선 */
+  --color-divider:       #D2D2D7;
+
+  /* 시맨틱 */
+  --color-success:       #34C759;
+  --color-warning:       #FF9F0A;
+  --color-danger:        #FF3B30;
+
+  /* 재원 (도메인 전용) */
+  --color-funding-gov:    #0071E3;
+  --color-funding-cash:   #34C759;
+  --color-funding-inkind: #FF9F0A;
+
+  /* 라운드 */
+  --radius-sm:    6px;
+  --radius:       12px;
+  --radius-lg:    18px;
+  --radius-xl:    24px;
+  --radius-pill:  980px;
+}
+
+@theme inline {
+  /* Color tokens */
+  --color-bg: var(--color-bg);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-bg-tertiary: var(--color-bg-tertiary);
+  --color-bg-inverse: var(--color-bg-inverse);
+
+  --color-fg: var(--color-fg);
+  --color-fg-secondary: var(--color-fg-secondary);
+  --color-fg-tertiary: var(--color-fg-tertiary);
+  --color-fg-inverse: var(--color-fg-inverse);
+  --color-fg-link: var(--color-fg-link);
+
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-active: var(--color-accent-active);
+
+  --color-divider: var(--color-divider);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+
+  --color-funding-gov: var(--color-funding-gov);
+  --color-funding-cash: var(--color-funding-cash);
+  --color-funding-inkind: var(--color-funding-inkind);
+
+  /* Typography */
+  --font-sans: 'Pretendard', 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-display: 'SF Pro Display', 'Pretendard', sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, monospace;
+
+  --text-hero: 80px;
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 600;
+
+  --text-display: 56px;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 600;
+
+  --text-title-1: 32px;
+  --text-title-1--line-height: 1.15;
+  --text-title-1--font-weight: 600;
+
+  --text-title-2: 24px;
+  --text-title-2--line-height: 1.2;
+  --text-title-2--font-weight: 600;
+
+  --text-title-3: 20px;
+  --text-title-3--line-height: 1.25;
+  --text-title-3--font-weight: 600;
+
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+
+  --text-body-lg: 17px;
+  --text-body-lg--line-height: 1.5;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 1.4;
+
+  /* Spacing extras */
+  --spacing-18: 72px;
+  --spacing-22: 88px;
+  --spacing-30: 120px;
+
+  /* Radii */
+  --radius-sm: var(--radius-sm);
+  --radius-DEFAULT: var(--radius);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-DEFAULT: 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.10);
+
+  /* Easing */
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* =================================================================
+ * Base
+ * ================================================================= */
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 금액 표시용 등폭 숫자 */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

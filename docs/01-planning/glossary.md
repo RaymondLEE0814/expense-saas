@@ -9,7 +9,7 @@
 
 | 한글 | 영문 / DB | 정의 |
 |------|-----------|------|
-| **조직** | Organization / `organizations` | 멀티 테넌트 최상위 단위. 스타트업/그룹사 1개에 해당. 예: 안티그래비티 |
+| **조직** | Organization / `organizations` | 멀티 테넌트 최상위 단위. 스타트업/그룹사 1개에 해당. 예: (주)슈퍼런 |
 | **회사** | Company / `companies` | 조직 내 법인. 예: 리피치, 슈퍼런, 팜큐 |
 | **멤버십** | Membership / `memberships` | 사용자가 조직에 속한 관계 + 역할 |
 | **역할** | Role | `org_admin`(조직 관리자) / `company_member`(회사 담당자) / `viewer`(조회자) / `super_admin`(서비스 운영자) |
@@ -86,7 +86,7 @@
 |------|------|------|
 | **RLS** | Row Level Security | Postgres 행 단위 권한 정책 |
 | **테넌트** | Tenant | 멀티 테넌트의 한 단위 (= 조직) |
-| **시드 데이터** | Seed Data | 초기 데이터 (안티그래비티 조직 + 3개 회사 등) |
+| **시드 데이터** | Seed Data | 초기 데이터 ((주)슈퍼런 조직 + 3개 회사 등) |
 | **마이그레이션** | Migration | DB 스키마 변경 스크립트 |
 | **서버 액션** | Server Action | Next.js의 서버 측 변경 작업 |
 

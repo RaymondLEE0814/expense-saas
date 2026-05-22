@@ -32,7 +32,7 @@ export default function Home() {
         </div>
 
         <p className="text-caption text-fg-tertiary pt-10">
-          현재 Phase 1 (MVP α) 개발 중 · 자사(안티그래비티) 우선 적용
+          현재 Phase 1 (MVP α) 개발 중 · 자사((주)슈퍼런) 우선 적용
         </p>
       </div>
     </main>

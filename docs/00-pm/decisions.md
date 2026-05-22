@@ -57,3 +57,21 @@
   2. **(선택)** 컬럼 미사용, 수락 후 별도 매핑
 - **근거**: MVP 단순화. Phase 2에 컬럼 추가로 자동 매핑.
 - **영향**: 디자이너 멤버 초대 모달에서 회사 선택은 유지하되, 수락 후 별도 매핑 단계가 가능하도록 UX 보완 필요 (Phase 2 정식화).
+
+## ADR-008: 사업비 구성표 — `budget_item_lines` 도입 (Wave A.5)
+- **일자**: 2026-05-20
+- **결정**: `budget_items`(비목 카테고리) 아래에 `budget_item_lines`(산출 근거 라인) 테이블을 추가하고, `expenses.budget_item_line_id`로 집행을 라인 단위까지 연결한다.
+- **대안**:
+  1. `budget_items.planned_amount` 한 줄로만 계획 관리 — 정부 정산 양식과 입력 단위 불일치
+  2. **(선택)** 라인 테이블 신설, 라인마다 재원(`source_type`)·단가·수량·기간을 가지도록 분리
+- **근거**:
+  - 정부지원 사업의 사업비 산출 근거는 "개발자 인건비 340만원 × 2명 × 5개월" 같은 **라인 단위**로 양식이 요구된다.
+  - 한 비목(예: 인건비) 안에서 라인별 재원이 다른 경우(정부지원금 라인 + 현금 라인)가 흔하다 — 비목 단위 재원으로는 표현 불가.
+  - 집행을 라인에 매칭해야 라인별 잔여·정산 추적이 가능해진다.
+- **영향**:
+  - 마이그레이션: [supabase/migrations/20260520000001_add_budget_item_lines.sql](../../supabase/migrations/20260520000001_add_budget_item_lines.sql)
+  - `expenses.budget_item_line_id` NULL 허용 — 라인을 쓰지 않는 단순 사업도 호환.
+  - 뷰 `v_budget_item_execution`이 라인 합계 우선, 라인 없으면 `budget_items.planned_amount`로 fallback.
+  - 새 뷰 `v_budget_item_line_execution`로 라인별 집행률 제공.
+  - **화면 영향**: S-PRJ-003(비목 관리)에 라인 편집 UI 추가 필요 → 디자이너 후속 보완(Wave A.5 design).
+- **호환성**: 기존 `budget_items.planned_amount`는 라인이 없을 때 fallback으로 동작 — 데이터 마이그레이션 불필요.

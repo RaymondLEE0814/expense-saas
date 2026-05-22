@@ -47,3 +47,23 @@
 - [완료] [PM] 두 번째 커밋(supabase/) GitHub 푸시
 - [블록 해소] B-002 closed (Supabase 프로젝트 생성 + 마이그레이션 완료)
 - [다음 단계] **corder 부트스트랩 (P1-01 ~ P1-05)** — Next.js 프로젝트 SRC/ 안에 초기화
+
+---
+
+## 2026-05-20
+
+- [완료] [corder] P1-01~05 부트스트랩 — Next.js 16 + TS + Tailwind v4 + shadcn 초기화, Supabase 클라이언트 3종 + 미들웨어, 디자인 토큰 매핑 (커밋 3f4a779)
+- [완료] [corder] 첫 인증 화면 골격 — S-AUTH-001 로그인 페이지 + App Shell 레이아웃
+- [완료] [아키텍쳐] **Wave A.5** — 사업비 구성표(`budget_item_lines`) 모델 신설
+  - 마이그레이션: [20260520000001_add_budget_item_lines.sql](../../supabase/migrations/20260520000001_add_budget_item_lines.sql)
+  - `expenses.budget_item_line_id` 추가, 뷰 `v_budget_item_execution` 재정의 + `v_budget_item_line_execution` 신설
+  - 근거 및 영향: [ADR-008](decisions.md)
+- [완료] [PM] 조직명 일괄 변경 — "안티그래비티" → "(주)슈퍼런" (worklist/PRD/glossary/personas/design-system/screens/seed.sql 등)
+
+---
+
+## 2026-05-21
+
+- [완료] [PM] 현재 진척 PM 보고 (사용자 요청)
+- [완료] [PM] WBS 동기화 — P1-01~05 ✅, P1-06(Wave A.5) 추가
+- [진행] [PM] 미커밋 정리 — 의미 단위 2 커밋(Wave A.5 / 조직명 일괄 변경 + 부트스트랩 잔여) + GitHub push + Supabase 원격 마이그레이션 push

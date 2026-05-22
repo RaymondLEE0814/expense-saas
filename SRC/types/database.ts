@@ -72,11 +72,119 @@ export type Database = {
           },
         ]
       }
+      budget_item_lines: {
+        Row: {
+          budget_item_id: string
+          created_at: string
+          created_by: string | null
+          description: string
+          id: string
+          memo: string | null
+          organization_id: string
+          period_months: number | null
+          planned_amount: number
+          project_id: string
+          quantity: number | null
+          sort_order: number
+          source_type: Database["public"]["Enums"]["funding_source"]
+          unit_price: number | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          budget_item_id: string
+          created_at?: string
+          created_by?: string | null
+          description: string
+          id?: string
+          memo?: string | null
+          organization_id: string
+          period_months?: number | null
+          planned_amount?: number
+          project_id: string
+          quantity?: number | null
+          sort_order?: number
+          source_type: Database["public"]["Enums"]["funding_source"]
+          unit_price?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          budget_item_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          memo?: string | null
+          organization_id?: string
+          period_months?: number | null
+          planned_amount?: number
+          project_id?: string
+          quantity?: number | null
+          sort_order?: number
+          source_type?: Database["public"]["Enums"]["funding_source"]
+          unit_price?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "budget_item_lines_budget_item_id_fkey"
+            columns: ["budget_item_id"]
+            isOneToOne: false
+            referencedRelation: "budget_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_budget_item_id_fkey"
+            columns: ["budget_item_id"]
+            isOneToOne: false
+            referencedRelation: "v_budget_item_execution"
+            referencedColumns: ["budget_item_id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "v_project_execution"
+            referencedColumns: ["project_id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_updated_by_fkey"
+            columns: ["updated_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       budget_items: {
         Row: {
           code: string | null
           created_at: string
           created_by: string | null
+          description: string | null
           id: string
           memo: string | null
           name: string
@@ -91,6 +199,7 @@ export type Database = {
           code?: string | null
           created_at?: string
           created_by?: string | null
+          description?: string | null
           id?: string
           memo?: string | null
           name: string
@@ -105,6 +214,7 @@ export type Database = {
           code?: string | null
           created_at?: string
           created_by?: string | null
+          description?: string | null
           id?: string
           memo?: string | null
           name?: string
@@ -260,6 +370,7 @@ export type Database = {
         Row: {
           amount: number
           budget_item_id: string
+          budget_item_line_id: string | null
           created_at: string
           created_by: string | null
           description: string | null
@@ -277,6 +388,7 @@ export type Database = {
         Insert: {
           amount: number
           budget_item_id: string
+          budget_item_line_id?: string | null
           created_at?: string
           created_by?: string | null
           description?: string | null
@@ -294,6 +406,7 @@ export type Database = {
         Update: {
           amount?: number
           budget_item_id?: string
+          budget_item_line_id?: string | null
           created_at?: string
           created_by?: string | null
           description?: string | null
@@ -322,6 +435,20 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "v_budget_item_execution"
             referencedColumns: ["budget_item_id"]
+          },
+          {
+            foreignKeyName: "expenses_budget_item_line_id_fkey"
+            columns: ["budget_item_line_id"]
+            isOneToOne: false
+            referencedRelation: "budget_item_lines"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "expenses_budget_item_line_id_fkey"
+            columns: ["budget_item_line_id"]
+            isOneToOne: false
+            referencedRelation: "v_budget_item_line_execution"
+            referencedColumns: ["line_id"]
           },
           {
             foreignKeyName: "expenses_created_by_fkey"
@@ -653,11 +780,14 @@ export type Database = {
       v_budget_item_execution: {
         Row: {
           budget_item_id: string | null
+          description: string | null
           executed_amount: number | null
           execution_rate: number | null
           name: string | null
           organization_id: string | null
           planned_amount: number | null
+          planned_direct: number | null
+          planned_from_lines: number | null
           project_id: string | null
           remaining_amount: number | null
         }
@@ -678,6 +808,57 @@ export type Database = {
           },
           {
             foreignKeyName: "budget_items_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "v_project_execution"
+            referencedColumns: ["project_id"]
+          },
+        ]
+      }
+      v_budget_item_line_execution: {
+        Row: {
+          budget_item_id: string | null
+          description: string | null
+          executed_amount: number | null
+          execution_rate: number | null
+          line_id: string | null
+          organization_id: string | null
+          planned_amount: number | null
+          project_id: string | null
+          remaining_amount: number | null
+          source_type: Database["public"]["Enums"]["funding_source"] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "budget_item_lines_budget_item_id_fkey"
+            columns: ["budget_item_id"]
+            isOneToOne: false
+            referencedRelation: "budget_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_budget_item_id_fkey"
+            columns: ["budget_item_id"]
+            isOneToOne: false
+            referencedRelation: "v_budget_item_execution"
+            referencedColumns: ["budget_item_id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_organization_id_fkey"
+            columns: ["organization_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "budget_item_lines_project_id_fkey"
             columns: ["project_id"]
             isOneToOne: false
             referencedRelation: "v_project_execution"

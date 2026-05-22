@@ -48,11 +48,12 @@
 ### 2.1 부트스트랩
 | ID | 작업 | 담당 | 의존 | 상태 |
 |----|------|------|------|------|
-| P1-01 | Next.js 15 + TS + Tailwind + shadcn 초기화 | corder | P0-18 | ⬜ |
-| P1-02 | Supabase 프로젝트 생성·환경변수 설정 | corder + 사용자 | P1-01 | ⬜ |
-| P1-03 | DB 마이그레이션 적용 (스키마/RLS/시드) | corder | P1-02 | ⬜ |
-| P1-04 | Supabase 클라이언트 3종 + 미들웨어 | corder | P1-02 | ⬜ |
-| P1-05 | 디자인 토큰 → Tailwind 설정 매핑 | corder | P0-09 | ⬜ |
+| P1-01 | Next.js 16 + TS + Tailwind v4 + shadcn 초기화 | corder | P0-18 | ✅ 완료 |
+| P1-02 | Supabase 프로젝트 생성·환경변수 설정 | corder + 사용자 | P1-01 | ✅ 완료 |
+| P1-03 | DB 마이그레이션 적용 (스키마/RLS/시드) | corder | P1-02 | ✅ 완료 |
+| P1-04 | Supabase 클라이언트 3종 + 미들웨어 | corder | P1-02 | ✅ 완료 |
+| P1-05 | 디자인 토큰 → Tailwind 설정 매핑 | corder | P0-09 | ✅ 완료 |
+| P1-06 | **Wave A.5** — 사업비 구성표(`budget_item_lines`) 모델 추가 | 아키텍쳐 | P1-03 | ✅ 완료 — [ADR-008](decisions.md) |
 
 ### 2.2 인증 / 조직
 | ID | 작업 | 화면 ID | 담당 | 상태 |
